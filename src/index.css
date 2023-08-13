@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 html {
@@ -21,3 +22,28 @@ html {
 .nav {}
 
 .navChild {}
+
+.register {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.registerForm {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+}
+
+.registerForm > input {
+  margin: 5px;
+  height: 2rem;
+}
+
+.registerForm > button {
+  background-color: rgb(85, 140, 196);
+  height: 2rem;
+}
