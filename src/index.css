@@ -47,3 +47,45 @@ html {
   background-color: rgb(85, 140, 196);
   height: 2rem;
 }
+
+.login {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+}
+
+.loginForm > input {
+  margin: 5px;
+  height: 2rem;
+}
+
+.loginForm > button {
+  background-color: rgb(85, 140, 196);
+  height: 2rem;
+}
+
+.submitBlog {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.submitBlogForm{
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  outline: 2px solid pink;
+}
