@@ -14,6 +14,7 @@ const Login = () => {
         validationSchema: loginSchema,
         onSubmit: async (values) => {
             console.log(JSON.stringify(values));
+
             try {
                 const resp = await fetch('http://localhost:3000/login', {
                     method: 'POST',

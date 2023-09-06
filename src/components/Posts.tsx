@@ -3,7 +3,7 @@ import { useState } from 'react'
 
 const Posts = () => {
 
-    let [blogs, setBlogs] = useState<null | string[]>(null);
+    let [blogs, setBlogs] = useState<any>(null);
 
     useEffect(() => {
 
@@ -12,10 +12,10 @@ const Posts = () => {
             let resp = await fetch('http://localhost:3000/blogs', {
                 credentials: "include",
             });
+            //@ts-ignore
             let data = await resp.json();
-            console.log('setting posts');
             setBlogs(data);
-            console.log('data is', data);
+            console.log(data);
         }
 
         getPosts();
@@ -33,9 +33,15 @@ const Posts = () => {
     }
 
     return (
-        <div>
+        <div className='posts'>
             <h1>Posts</h1>
-            {blogs && <p> {JSON.stringify(blogs)} </p>}
+            {blogs && <p className='postParagraph'> {blogs.map((blog: { blogTitle: string, blogBody: string, blogImageName: string }) =>
+                <div>
+                    <h1>${blog.blogTitle}</h1>
+                    <p> ${blog.blogBody} </p>
+                    <img src={"http://localhost:3000/images" + blog.blogImageName} />
+                </div>
+            )} </p>}
             <button onClick={handleLogout}>logout</button>
         </div>
     )

@@ -1,21 +1,28 @@
 import { useFormik } from 'formik';
 import { blogSchema } from '../Validation/BlogValidation';
+import { useState } from 'react';
 
 const SubmitBlog = () => {
+
+    const [image, setImage] = useState<File | null>(null);
+    console.log('IMAGE');
+    console.dir(image);
 
     const formik = useFormik({
         initialValues: {
             blogTitle: "",
             blogBody: "",
-            files: null
         },
+
         validationSchema: blogSchema,
         onSubmit: async (values) => {
+
             const formData = new FormData();
             formData.append("blogTitle", values.blogTitle);
             formData.append("blogBody", values.blogBody);
-            // formData.append("files", values.files);
-
+            if (image) {
+                formData.append("blogImage", image, image.name);
+            }
             console.log('formData is', Array.from(formData));
             let resp = await fetch('http://localhost:3000/newblogentry', {
                 method: 'POST',
@@ -26,8 +33,6 @@ const SubmitBlog = () => {
             console.log(data);
         }
     })
-    console.log(formik.values);
-
 
     return (
         <div className="submitBlog">
@@ -55,7 +60,12 @@ const SubmitBlog = () => {
                     id="blogImage"
                     name="blogImage"
                     type="file"
-                    onChange={formik.handleChange}
+
+                    onChange={(e) => {
+                        if (e.target.files) {
+                            setImage(e.target.files[0]);
+                        }
+                    }}
                     // onChange={(e) => {
                     //     formik.values.files = e.currentTarget?.files;
                     // }}

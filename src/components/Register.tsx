@@ -16,6 +16,7 @@ const Register = () => {
         validationSchema: userSchema,
         onSubmit: async (values) => {
             try {
+                console.log('trying');
                 const resp = await fetch('http://localhost:3000/register', {
                     method: "POST",
                     headers: {
@@ -80,7 +81,7 @@ const Register = () => {
                     onChange={formik.handleChange}
                 />
                 {formik.touched.confirmPassword && formik.errors.confirmPassword ? <p>{formik.errors.confirmPassword}</p> : null}
-                {/* {!formik.isValid && JSON.stringify(formik.errors)}; */}
+                {!formik.isValid && JSON.stringify(formik.errors)};
                 <button type="submit">Submit</button>
             </form>
             {registerMessage && <p>{registerMessage}</p>}
