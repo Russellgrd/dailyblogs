@@ -5,9 +5,6 @@ import { useState } from 'react';
 const SubmitBlog = () => {
 
     const [image, setImage] = useState<File | null>(null);
-    console.log('IMAGE');
-    console.dir(image);
-
     const formik = useFormik({
         initialValues: {
             blogTitle: "",
@@ -16,14 +13,13 @@ const SubmitBlog = () => {
 
         validationSchema: blogSchema,
         onSubmit: async (values) => {
-
             const formData = new FormData();
             formData.append("blogTitle", values.blogTitle);
             formData.append("blogBody", values.blogBody);
             if (image) {
                 formData.append("blogImage", image, image.name);
+                console.log('formData is', Array.from(formData));
             }
-            console.log('formData is', Array.from(formData));
             let resp = await fetch('http://localhost:3000/newblogentry', {
                 method: 'POST',
                 credentials: "include",

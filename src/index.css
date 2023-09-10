@@ -90,14 +90,31 @@ html {
   outline: 2px solid pink;
 }
 
-.posts {
-  border: 2px solid gold;
+.posts{
   display: flex;
-  min-height: 100vh;
-  width: 100%;
   flex-direction: column;
-  width: 70%;
+  min-height: 100vh;
+  min-width: 100%;
+  align-items: center;
+}
+
+.post{
+  display: flex;
+  flex-direction: column;
+  width: 80%;
   align-items: center;
   justify-content: center;
 }
 
+.postHeading{
+
+}
+
+.postBody{
+
+}
+
+.postImage{
+  object-fit: cover;
+  width: 100%;
+}

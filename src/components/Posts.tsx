@@ -35,14 +35,13 @@ const Posts = () => {
     return (
         <div className='posts'>
             <h1>Posts</h1>
-            {blogs && <p className='postParagraph'> {blogs.map((blog: { blogTitle: string, blogBody: string, blogImageName: string }) =>
-                <div>
-                    <h1>${blog.blogTitle}</h1>
-                    <p> ${blog.blogBody} </p>
-                    <img src={"http://localhost:3000/images" + blog.blogImageName} />
+            {blogs && blogs.map((blog: { _id: string, blogTitle: string, blogBody: string, blogImageName: string }) =>
+                <div className='post' key={blog._id}>
+                    <h1 className='postHeading'>{blog.blogTitle}</h1>
+                    <p className='postBody'> {blog.blogBody} </p>
+                    {blog.blogImageName && <img className='postImage' src={"http://localhost:3000/images/" + blog.blogImageName} />}
                 </div>
-            )} </p>}
-            <button onClick={handleLogout}>logout</button>
+            )}
         </div>
     )
 }
