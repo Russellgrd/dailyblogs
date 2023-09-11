@@ -27,9 +27,15 @@ const Nav = () => {
 
     return (
         <ul className="nav">
-            {isAuth?.authenticated == true ?
-                <li className="navChild"><Link to='/logout'>Logout</Link></li> :
-                <li className="navChild"><Link to="/login">Login</Link></li>}
+            <li className="navChild">
+                <Link to='/login'>Login</Link>
+            </li>
+            <li className="navChild">
+                <Link to='/logout'>Logout</Link>
+            </li>
+            <li className="navChild">
+                <Link to='/posts'>Posts</Link>
+            </li>
         </ul>
 
     )

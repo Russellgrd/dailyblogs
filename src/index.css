@@ -19,9 +19,33 @@ html {
 }
 
 
-.nav {}
+.nav {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 5vh;
+  background-color: rgba(93, 99, 181, 0.665);
+  align-items: center;
+  justify-content: center;
+}
 
-.navChild {}
+.navChild {
+  margin: auto;
+  text-decoration: none;
+  list-style: none;
+  text-decoration: none;
+
+}
+
+.navChild > a{
+  list-style: none;
+  text-decoration: none;
+  color: white;
+  font-weight: 400;
+ 
+}
+
+
 
 .register {
   min-height: 100vh;
@@ -60,17 +84,23 @@ html {
 .loginForm {
   display: flex;
   flex-direction: column;
-  width: 25%;
+  min-width: 50%;
+  justify-content: center;
+  align-items: center;
 }
 
 .loginForm > input {
   margin: 5px;
   height: 2rem;
+  min-width: 50%;
 }
 
 .loginForm > button {
-  background-color: rgb(85, 140, 196);
+  background-color: rgba(93, 99, 181, 0.665);
   height: 2rem;
+  min-width: 25%;
+  border: none;
+  color: white;
 }
 
 .submitBlog {
@@ -111,7 +141,7 @@ html {
 }
 
 .postBody{
-
+  
 }
 
 .postImage{
