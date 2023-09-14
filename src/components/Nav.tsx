@@ -1,20 +1,22 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { UserContext } from "../context/UserContext";
+
 
 
 const Nav = () => {
 
-    const [isAuth, setIsAuth] = useState<null | { authenticated: boolean }>(null);
-
+    const userContext = useContext(UserContext);
+    // console.log('userContext', JSON.stringify(userContext));
+    // console.log(userContext.user.email);
 
     const isAuthCheck = async () => {
         try {
-            setIsAuth({ authenticated: false });
             const resp = await fetch('http://localhost:3000/auth', {
                 credentials: "include",
             });
             const data = await resp.json();
-            setIsAuth(data);
+            userContext.setUser(data);
             console.log('IS Authed is >>>>', data);
         } catch (err) {
             console.log('nav error', err);
@@ -26,6 +28,7 @@ const Nav = () => {
     }, [])
 
     return (
+
         <ul className="nav">
             <li className="navChild">
                 <Link to='/login'>Login</Link>
@@ -36,6 +39,10 @@ const Nav = () => {
             <li className="navChild">
                 <Link to='/posts'>Posts</Link>
             </li>
+            <li className="navChild">
+                <Link to='/submitblog'>submit post</Link>
+            </li>
+            {userContext?.user?.email && <p>{userContext.user.email}</p>}
         </ul>
 
     )
