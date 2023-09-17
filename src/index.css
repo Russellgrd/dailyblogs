@@ -20,6 +20,8 @@ html {
 
 
 .nav {
+
+  padding-left: 1rem;
   display: flex;
   align-items: center;
   width: 100%;
@@ -30,7 +32,7 @@ html {
 }
 
 .navChild {
-  margin: auto;
+  
   text-decoration: none;
   list-style: none;
   text-decoration: none;
@@ -137,14 +139,16 @@ html {
 }
 
 .postHeading{
-
+  margin: 1rem;
 }
 
 .postBody{
-  
+  margin: 1rem;
 }
 
 .postImage{
   object-fit: cover;
-  width: 100%;
+  object-position: center;
+  width: 50%;
+
 }

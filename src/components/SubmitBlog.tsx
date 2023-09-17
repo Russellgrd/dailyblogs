@@ -1,9 +1,16 @@
 import { useFormik } from 'formik';
 import { blogSchema } from '../Validation/BlogValidation';
 import { useState } from 'react';
+import { useContext } from 'react';
+import { UserContext } from "../context/UserContext";
+import { useNavigate } from 'react-router-dom';
+
+
 
 const SubmitBlog = () => {
 
+    const navigate = useNavigate();
+    const userContext = useContext(UserContext);
     const [image, setImage] = useState<File | null>(null);
     const formik = useFormik({
         initialValues: {
@@ -26,11 +33,16 @@ const SubmitBlog = () => {
                 body: formData
             });
             let data = await resp.json();
-            console.log(data);
+            if (data.message.includes("blog successfully saved")) {
+                navigate('/posts');
+            }
         }
     })
 
+    console.log('Submit blog component', userContext);
+
     return (
+
         <div className="submitBlog">
             <form className='submitBlogForm' onSubmit={formik.handleSubmit} encType='multipart/form-data'>
                 <input

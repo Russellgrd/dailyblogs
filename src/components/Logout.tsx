@@ -1,10 +1,12 @@
 
 import { useEffect, useState } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 
 const Logout = () => {
 
+    const navigate = useNavigate();
     const [isLoggedOut, setIsLoggedOut] = useState<null | { message: string }>(null);
+
 
     useEffect(() => {
         fetch("http://localhost:3000/logout", {
@@ -14,6 +16,9 @@ const Logout = () => {
             .then((data) => {
                 setIsLoggedOut(data);
             })
+            .then(() => {
+                navigate('/');
+            })
             .catch((err) => {
                 console.log('there was an error', err);
             })
@@ -22,7 +27,7 @@ const Logout = () => {
     return (
         <div className="logout">
 
-            <h1>Logout Route</h1>
+            <h1>Logged out</h1>
             {isLoggedOut?.message == "successfully logged out" ? <p>Successfully logged out</p> : <p>{isLoggedOut?.message}</p>}
         </div>
     )

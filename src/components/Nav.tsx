@@ -11,38 +11,43 @@ const Nav = () => {
     // console.log(userContext.user.email);
 
     const isAuthCheck = async () => {
-        try {
-            const resp = await fetch('http://localhost:3000/auth', {
-                credentials: "include",
-            });
-            const data = await resp.json();
-            userContext.setUser(data);
-            console.log('IS Authed is >>>>', data);
-        } catch (err) {
-            console.log('nav error', err);
-        }
+        const resp = await fetch('http://localhost:3000/auth', {
+            credentials: "include",
+        });
+        const data = await resp.json();
+        userContext.setUser(data);
     }
 
     useEffect(() => {
-        isAuthCheck();
+        isAuthCheck()
+            .catch((err) => {
+                console.log('Error', err);
+            })
     }, [])
+
+    console.log(userContext)
 
     return (
 
         <ul className="nav">
-            <li className="navChild">
-                <Link to='/login'>Login</Link>
-            </li>
-            <li className="navChild">
-                <Link to='/logout'>Logout</Link>
-            </li>
-            <li className="navChild">
-                <Link to='/posts'>Posts</Link>
-            </li>
-            <li className="navChild">
-                <Link to='/submitblog'>submit post</Link>
-            </li>
-            {userContext?.user?.email && <p>{userContext.user.email}</p>}
+            {userContext?.user?.email ?
+                <li className="navChild">
+                    <Link to='/logout'>Logout</Link>
+                </li> : <li className="navChild">
+                    <Link to='/login'>Login</Link>
+                </li>
+            }
+
+            {userContext?.user?.email &&
+                <li className="navChild">
+                    <Link to='/posts'>Posts</Link>
+                </li>}
+
+            {userContext?.user?.email &&
+                <li className="navChild">
+                    <Link to='/submitblog'>submit post</Link>
+                </li>}
+            {userContext?.user?.email && <p>{userContext?.user?.email}</p>}
         </ul>
 
     )
