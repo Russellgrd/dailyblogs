@@ -2,20 +2,20 @@ import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 
-
-
 const Nav = () => {
 
-    const userContext = useContext(UserContext);
-    // console.log('userContext', JSON.stringify(userContext));
-    // console.log(userContext.user.email);
+    const [loggedIn, setIsLoggedIn] = useState<boolean>(false);
 
+    const userContext = useContext(UserContext);
     const isAuthCheck = async () => {
         const resp = await fetch('http://localhost:3000/auth', {
             credentials: "include",
         });
         const data = await resp.json();
         userContext.setUser(data);
+        if (data?.email) {
+            setIsLoggedIn(true);
+        }
     }
 
     useEffect(() => {
@@ -23,9 +23,8 @@ const Nav = () => {
             .catch((err) => {
                 console.log('Error', err);
             })
-    }, [])
-
-    console.log(userContext)
+        console.log('logged in use effect');
+    }, [loggedIn])
 
     return (
 

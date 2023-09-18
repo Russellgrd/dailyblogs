@@ -46,6 +46,7 @@ const SubmitBlog = () => {
         <div className="submitBlog">
             <form className='submitBlogForm' onSubmit={formik.handleSubmit} encType='multipart/form-data'>
                 <input
+                    className='blogTitle'
                     placeholder="blogTitle"
                     id="blogTitle"
                     name="blogTitle"
@@ -55,6 +56,7 @@ const SubmitBlog = () => {
                     onChange={formik.handleChange}
                 />
                 <textarea
+                    className='blogBody'
                     placeholder="blogBody"
                     id="blogBody"
                     name="blogBody"
@@ -63,6 +65,7 @@ const SubmitBlog = () => {
                     onChange={formik.handleChange}
                 />
                 <input
+                    className='blogFile'
                     typeof='file'
                     placeholder="blogImage"
                     id="blogImage"
@@ -79,7 +82,7 @@ const SubmitBlog = () => {
                     // }}
                     onBlur={formik.handleBlur}
                 />
-                <button type='submit'>submit</button>
+                <button className='blogButton' type='submit'>submit</button>
             </form>
         </div>
     )

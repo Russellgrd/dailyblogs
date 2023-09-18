@@ -1,25 +1,25 @@
 import { useEffect } from 'react'
 import { useState } from 'react'
 import moment from 'moment';
+import { UserContext } from '../context/UserContext';
+
 
 const Posts = () => {
-
     let [blogs, setBlogs] = useState<any>(null);
-    console.log('blogs are', blogs);
-    useEffect(() => {
 
+    useEffect(() => {
         const getPosts = async () => {
-            console.log('running use effect');
             let resp = await fetch('http://localhost:3000/blogs', {
                 credentials: "include",
             });
-            //@ts-ignore
             let data = await resp.json();
             setBlogs(data);
-            console.log(data);
-        }
 
-        getPosts();
+        }
+        getPosts()
+            .catch((err) => {
+                console.log(err);
+            })
     }, []);
 
     return (

@@ -8,13 +8,9 @@ import Register from './components/Register';
 import Posts from './components/Posts';
 import SubmitBlog from './components/SubmitBlog';
 import Logout from './components/Logout';
-import { useState, createContext, useContext } from 'react';
 import { UserContextProvider } from './context/UserContext';
 
-
-
 function App() {
-
 
   return (
     <BrowserRouter>
