@@ -4,18 +4,15 @@ import { UserContext } from "../context/UserContext";
 
 const Nav = () => {
 
-    const [loggedIn, setIsLoggedIn] = useState<boolean>(false);
 
     const userContext = useContext(UserContext);
+
     const isAuthCheck = async () => {
         const resp = await fetch('http://localhost:3000/auth', {
             credentials: "include",
         });
         const data = await resp.json();
         userContext.setUser(data);
-        if (data?.email) {
-            setIsLoggedIn(true);
-        }
     }
 
     useEffect(() => {
@@ -23,8 +20,7 @@ const Nav = () => {
             .catch((err) => {
                 console.log('Error', err);
             })
-        console.log('logged in use effect');
-    }, [loggedIn])
+    }, [])
 
     return (
 

@@ -1,10 +1,11 @@
-import { useEffect } from 'react'
-import { useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import moment from 'moment';
 import { UserContext } from '../context/UserContext';
 
 
 const Posts = () => {
+
+    const userContext = useContext(UserContext);
     let [blogs, setBlogs] = useState<any>(null);
 
     useEffect(() => {
@@ -14,9 +15,19 @@ const Posts = () => {
             });
             let data = await resp.json();
             setBlogs(data);
-
+        }
+        const isAuthCheck = async () => {
+            const resp = await fetch('http://localhost:3000/auth', {
+                credentials: "include",
+            });
+            const data = await resp.json();
+            userContext.setUser(data);
         }
         getPosts()
+            .catch((err) => {
+                console.log(err);
+            })
+        isAuthCheck()
             .catch((err) => {
                 console.log(err);
             })

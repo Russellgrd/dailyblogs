@@ -1,9 +1,12 @@
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { UserContext } from '../context/UserContext';
+
 
 const Logout = () => {
 
+    const userContext = useContext(UserContext);
     const navigate = useNavigate();
     const [isLoggedOut, setIsLoggedOut] = useState<null | { message: string }>(null);
 
