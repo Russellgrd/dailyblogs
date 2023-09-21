@@ -62,6 +62,13 @@ html {
 .homeHeading {
   font-family: 'Lobster', cursive;
   font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.homeBackground {
+  object-fit: cover;
+  object-position: center;
+  width: 50%;
 }
 
 .register {

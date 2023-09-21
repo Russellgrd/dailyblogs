@@ -1,7 +1,7 @@
 import { useEffect, useState, useContext } from 'react'
 import moment from 'moment';
 import { UserContext } from '../context/UserContext';
-
+import { useIsAuth } from "../helpers/useIsAuth.jsx";
 
 const Posts = () => {
 
