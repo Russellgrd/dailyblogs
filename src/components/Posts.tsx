@@ -1,10 +1,9 @@
 import { useEffect, useState, useContext } from 'react'
 import moment from 'moment';
 import { UserContext } from '../context/UserContext';
-import { useIsAuth } from "../helpers/useIsAuth.jsx";
+import { useIsAuth } from '../helpers/useIsAuth';
 
 const Posts = () => {
-
     const userContext = useContext(UserContext);
     let [blogs, setBlogs] = useState<any>(null);
 
@@ -16,22 +15,23 @@ const Posts = () => {
             let data = await resp.json();
             setBlogs(data);
         }
-        const isAuthCheck = async () => {
-            const resp = await fetch('http://localhost:3000/auth', {
-                credentials: "include",
-            });
-            const data = await resp.json();
-            userContext.setUser(data);
-        }
+
+        // const isAuthCheck = async () => {
+        //     const resp = await fetch('http://localhost:3000/auth', {
+        //         credentials: "include",
+        //     });
+        //     const data = await resp.json();
+        //     userContext.setUser(data);
+        // }
+
         getPosts()
             .catch((err) => {
                 console.log(err);
             })
-        isAuthCheck()
-            .catch((err) => {
-                console.log(err);
-            })
+        useIsAuth(userContext);
     }, []);
+
+
 
     return (
         <div className='posts'>

@@ -1,25 +1,25 @@
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
+import { useIsAuth } from "../helpers/useIsAuth";
 
 const Nav = () => {
 
-
     const userContext = useContext(UserContext);
-
-    const isAuthCheck = async () => {
-        const resp = await fetch('http://localhost:3000/auth', {
-            credentials: "include",
-        });
-        const data = await resp.json();
-        userContext.setUser(data);
-    }
+    // const isAuthCheck = async () => {
+    //     const resp = await fetch('http://localhost:3000/auth', {
+    //         credentials: "include",
+    //     });
+    //     const data = await resp.json();
+    //     userContext.setUser(data);
+    // }
 
     useEffect(() => {
-        isAuthCheck()
-            .catch((err) => {
-                console.log('Error', err);
-            })
+        // isAuthCheck()
+        //     .catch((err) => {
+        //         console.log('Error', err);
+        //     })
+        useIsAuth(userContext);
     }, [])
 
     return (
