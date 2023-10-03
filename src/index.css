@@ -9,7 +9,7 @@
 html {
   font-weight: 16px;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  background-color: #efefef;
+  background-color: #efefefe4;
 }
 
 .wrapper {
@@ -18,19 +18,21 @@ html {
   display: flex;
   flex-direction: column;
   align-items: center;
+
 }
 
 
 .nav {
-  height: 5vh;
+  height: 6vh;
+  position: fixed;
   padding-left: 1rem;
   display: flex;
   align-items: center;
   width: 100%;
   min-height: 5vh;
-  background-color: rgba(93, 99, 181, 0.665);
   align-items: center;
   justify-content: center;
+  background-color: rgba(0, 0, 0, 0.591);
 }
 
 .navChild {
@@ -41,28 +43,41 @@ html {
 
 }
 
-.navChild > a{
+.navChild>a {
   list-style: none;
   text-decoration: none;
-  color: white;
-  font-weight: 400;
- 
+  color: #faa907;
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.navUserEmail {
+  font-size: 1.2rem;
+  margin-right: 1rem;
+  color: #faa907;
+
+
 }
 
 .home {
   display: flex;
-  height: 95vh;
+  height: 100vh;
   width: 100%;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  border: 2px solid gold;
+  background-image: url('./assets/home_background.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
 }
 
 .homeHeading {
   font-family: 'Lobster', cursive;
   font-size: 3rem;
   margin-bottom: 1rem;
+  color: #F5AE23;
 }
 
 .homeBackground {
@@ -86,18 +101,21 @@ html {
   width: 25%;
 }
 
-.registerForm > input {
-  margin: 5px;
-  height: 2rem;
+.registerForm>input {
+  border: 1px solid gold;
+  width: 20rem;
+  height: 3rem;
+  margin-top: 1rem;
 }
 
-.registerForm > button {
-  background-color: rgb(85, 140, 196);
-  height: 2rem;
+.registerForm>button {
+  margin-top: 1rem;
+  border: 1px solid gold;
+  height: 3rem;
 }
 
 .login {
-  min-height: 100vh;
+  min-height: 95vh;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -113,18 +131,33 @@ html {
   align-items: center;
 }
 
-.loginForm > input {
+.loginForm>input {
+  border: 1px solid gold;
   margin: 5px;
-  height: 2rem;
+  height: 3rem;
   min-width: 50%;
 }
 
-.loginForm > button {
-  background-color: rgba(93, 99, 181, 0.665);
+.loginForm>button {
   height: 2rem;
-  min-width: 25%;
-  border: none;
-  color: white;
+  width: 12rem;
+  border: 1px solid gold;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+
+}
+
+.loginRegisterButton {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid gold;
+  width: 12rem;
+  text-align: center;
+  text-decoration: none;
+  height: 3rem;
+  text-align: center;
 }
 
 .submitBlog {
@@ -136,7 +169,7 @@ html {
   justify-content: center;
 }
 
-.submitBlogForm{
+.submitBlogForm {
   height: 50vh;
   display: flex;
   flex-direction: column;
@@ -144,14 +177,18 @@ html {
   justify-content: space-around;
   align-items: center;
   width: 50%;
-  background:rgba(93, 99, 181, 0.665);
+}
+
+*:focus {
+  outline: none;
 }
 
 .blogTitle {
   border: none;
   width: 100%;
-  height: 2rem;
+  height: 3rem;
   padding: 1rem;
+  border: 1px solid gold;
 }
 
 .blogBody {
@@ -159,22 +196,30 @@ html {
   height: 100%;
   width: 100%;
   padding: 1rem;
+  border: 1px solid gold;
 }
 
 .blogFile {
-  margin: 1rem;
-  height: 2rem;
-
+  display: none;
+}
+.blogFileButton {
+  margin-top: 1rem;
+  padding: 5px;
+  width: 12rem;
+  height: 3rem;
+  text-align: center;
+  border: 1px solid gold;
 }
 
 .blogButton {
-  border: none;
-  height: 2rem;
-  width: 6rem;
+  border: 1px solid gold;
+  padding: 5px;
+  width: 12rem;
+  height: 3rem;
   margin: 1rem;
 }
 
-.posts{
+.posts {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -182,7 +227,8 @@ html {
   align-items: center;
 }
 
-.post{
+.post {
+  margin-top: 2rem;
   display: flex;
   flex-direction: column;
   width: 80%;
@@ -190,15 +236,15 @@ html {
   justify-content: center;
 }
 
-.postHeading{
+.postHeading {
   margin: 1rem;
 }
 
-.postBody{
+.postBody {
   margin: 1rem;
 }
 
-.postImage{
+.postImage {
   object-fit: cover;
   object-position: center;
   width: 50%;

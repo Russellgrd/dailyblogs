@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from 'react'
+import { useEffect, useState, useContext, ReactHTMLElement } from 'react'
 import moment from 'moment';
 import { UserContext } from '../context/UserContext';
 import { useIsAuth } from '../helpers/useIsAuth';
@@ -32,16 +32,21 @@ const Posts = () => {
     }, []);
 
 
+    const handleBlogDelete = (e: React.MouseEvent<HTMLElement>) => {
+        console.log(e.target);
+    }
 
     return (
         <div className='posts'>
-            <h1>Posts</h1>
+
             {blogs && blogs.map((blog: { _id: string, blogTitle: string, blogBody: string, blogImageName: string, createdAt: string, email: string }) =>
                 <div className='post' key={blog._id}>
                     <h1 className='postHeading'>{blog.blogTitle}</h1>
                     <p>Written {moment(blog.createdAt).format('DD-MM-YYYY HH:mm')} by {blog.email.split("@")[0]}</p>
                     <p className='postBody'> {blog.blogBody} </p>
                     {blog.blogImageName && <img className='postImage' src={"http://localhost:3000/images/" + blog.blogImageName} />}
+                    {/* {userContext.user.email === blog.email ? <button onClick={(e) => { handleBlogDelete(e) }}> delete </button> : null}
+                    {JSON.stringify({ emailUserContext: userContext.user.email, emailBlogDatabase: blog.email })} */}
                 </div>
             )}
         </div>

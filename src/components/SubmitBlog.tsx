@@ -64,6 +64,9 @@ const SubmitBlog = () => {
                     onBlur={formik.handleBlur}
                     onChange={formik.handleChange}
                 />
+                <label className='blogFileButton' htmlFor='blogImage'>
+                    add image
+                </label>
                 <input
                     className='blogFile'
                     typeof='file'

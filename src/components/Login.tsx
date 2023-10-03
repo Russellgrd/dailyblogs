@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useFormik } from 'formik'
 import { loginSchema } from '../Validation/UserValidation';
 import { useNavigate } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const Login = () => {
 
@@ -63,6 +64,8 @@ const Login = () => {
                 />
                 <button type="submit">login</button>
             </form>
+            <p>don't have an account?</p>
+            <Link className="loginRegisterButton" to="/register">register</Link>
         </div>
     )
 }

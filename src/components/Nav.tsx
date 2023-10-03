@@ -27,7 +27,7 @@ const Nav = () => {
         <ul className="nav">
             {userContext?.user?.email ?
                 <li className="navChild">
-                    <Link to='/logout'>Logout</Link>
+                    <Link to='/logout'>logout</Link>
                 </li> : <li className="navChild">
                     <Link to='/login'>Login</Link>
                 </li>
@@ -35,14 +35,14 @@ const Nav = () => {
 
             {userContext?.user?.email &&
                 <li className="navChild">
-                    <Link to='/posts'>Posts</Link>
+                    <Link to='/posts'>posts</Link>
                 </li>}
 
             {userContext?.user?.email &&
                 <li className="navChild">
                     <Link to='/submitblog'>submit post</Link>
                 </li>}
-            {userContext?.user?.email && <p>{userContext?.user?.email}</p>}
+            {userContext?.user?.email && <p className="navUserEmail">{userContext?.user?.email}</p>}
         </ul>
 
     )
