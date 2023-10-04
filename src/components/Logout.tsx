@@ -7,7 +7,6 @@ const Logout = () => {
     const navigate = useNavigate();
     const [isLoggedOut, setIsLoggedOut] = useState<null | { message: string }>(null);
 
-
     useEffect(() => {
         fetch("http://localhost:3000/logout", {
             credentials: "include"

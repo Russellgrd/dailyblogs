@@ -21,6 +21,9 @@ html {
 
 }
 
+.navWrapper {
+  width:100%
+}
 
 .nav {
   height: 6vh;
@@ -33,6 +36,10 @@ html {
   align-items: center;
   justify-content: center;
   background-color: rgba(0, 0, 0, 0.591);
+}
+
+.navBurger {
+  display: none;
 }
 
 .navChild {
@@ -57,6 +64,33 @@ html {
   color: #faa907;
 
 
+}
+
+@media only screen and (max-width: 800px) {
+  .navBurger {
+    display: block;
+  }  
+  .nav {
+    visibility: hidden;
+    align-self: self-start;
+    flex-direction: column;
+    align-items: start;
+    width:50%;
+    height: auto;
+    position: fixed;
+    padding-left: 1rem;
+    
+  }
+  
+  .navChild {
+  
+  }
+  
+
+  
+  .navUserEmail {
+    align-self: self-start;
+  }
 }
 
 .home {

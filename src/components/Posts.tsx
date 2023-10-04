@@ -15,15 +15,6 @@ const Posts = () => {
             let data = await resp.json();
             setBlogs(data);
         }
-
-        // const isAuthCheck = async () => {
-        //     const resp = await fetch('http://localhost:3000/auth', {
-        //         credentials: "include",
-        //     });
-        //     const data = await resp.json();
-        //     userContext.setUser(data);
-        // }
-
         getPosts()
             .catch((err) => {
                 console.log(err);

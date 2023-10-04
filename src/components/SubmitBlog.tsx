@@ -5,8 +5,6 @@ import { useContext } from 'react';
 import { UserContext } from "../context/UserContext";
 import { useNavigate } from 'react-router-dom';
 
-
-
 const SubmitBlog = () => {
 
     const navigate = useNavigate();
@@ -80,9 +78,6 @@ const SubmitBlog = () => {
                             setImage(e.target.files[0]);
                         }
                     }}
-                    // onChange={(e) => {
-                    //     formik.values.files = e.currentTarget?.files;
-                    // }}
                     onBlur={formik.handleBlur}
                 />
                 <button className='blogButton' type='submit'>submit</button>
