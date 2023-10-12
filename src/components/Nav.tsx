@@ -6,21 +6,24 @@ import navBurger from '../assets/nav-burgerIcon.svg';
 
 
 const Nav = () => {
-
     const userContext = useContext(UserContext);
+    const [show, setShow] = useState(false);
     useEffect(() => {
         useIsAuth(userContext);
     }, [])
 
     const handleNavBurgerButton = () => {
-
+        setShow((val) => val = !val);
     }
+
+    let navClass = "nav ";
+    navClass += show ? "show" : "hide";
 
     return (
 
         <div className="navWrapper">
             <img onClick={handleNavBurgerButton} className="navBurger" src={navBurger} alt="Nav Burger Icon" />
-            <ul className="nav">
+            <ul className={navClass}>
                 {userContext?.user?.email ?
                     <li className="navChild">
                         <Link to='/logout'>logout</Link>
