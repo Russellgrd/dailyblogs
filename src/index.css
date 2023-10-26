@@ -294,3 +294,23 @@ html {
   width: 50%;
 
 }
+
+.postButton {
+border: 1px solid gold;
+margin-left: 2rem;
+}
+
+.postUserNotificationBox {
+  display: none;
+  position: absolute;
+  background-color: black;
+  color: #F5AE23;
+  top: 50%;
+  width: 50%;
+  height: 4rem;
+  border: 5px solid red;
+}
+
+.showMessage {
+  display: block;
+}

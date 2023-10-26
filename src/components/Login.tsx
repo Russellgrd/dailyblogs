@@ -3,8 +3,12 @@ import { useFormik } from 'formik'
 import { loginSchema } from '../Validation/UserValidation';
 import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
+import { Bars } from 'react-loading-icons'
 
 const Login = () => {
+
+    const [authenticating, setAuthenticating] = useState<any>(false);
+    const [authenticationError, setAuthenticationError] = useState<any>("");
 
     let navigate = useNavigate();
     const formik = useFormik({
@@ -15,8 +19,9 @@ const Login = () => {
         validationSchema: loginSchema,
         onSubmit: async (values) => {
             console.log(JSON.stringify(values));
-
             try {
+                setAuthenticating(true);
+                setAuthenticationError("");
                 const resp = await fetch('http://localhost:3000/login', {
                     method: 'POST',
                     credentials: "include",
@@ -27,14 +32,19 @@ const Login = () => {
                     body: JSON.stringify({ email: values.email, password: values.password })
                 })
                 let data = await resp.json();
-                if (data.message = "Successfully logged in. Redirecting.") {
+                if (data.message == "Successfully logged in. Redirecting.") {
+                    setAuthenticating(false);
                     navigate('/posts');
                 } else {
+                    console.log(data.message);
+                    setAuthenticating(false);
+                    setAuthenticationError(data.message);
                     //write logic for any reason as to why tokens are not received.
                 }
 
-            } catch (err) {
-                console.log(err);
+            } catch (err: unknown) {
+                setAuthenticating(false);
+                setAuthenticationError("Network or app error, please try again later");
             }
 
         },
@@ -43,6 +53,8 @@ const Login = () => {
 
     return (
         <div className="login">
+            {authenticating ? <Bars /> : null}
+            <p className="loginUserNotification">{authenticationError ? authenticationError : null}</p>
             <form className="loginForm" onSubmit={formik.handleSubmit}>
                 <input
                     placeholder="email"
@@ -65,6 +77,7 @@ const Login = () => {
                 <button type="submit">login</button>
             </form>
             <p>don't have an account?</p>
+            <img />
             <Link className="loginRegisterButton" to="/register">register</Link>
         </div>
     )
