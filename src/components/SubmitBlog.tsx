@@ -5,6 +5,7 @@ import { useContext } from 'react';
 import { UserContext } from "../context/UserContext";
 import { useNavigate } from 'react-router-dom';
 
+
 const SubmitBlog = () => {
 
     const navigate = useNavigate();
@@ -15,15 +16,14 @@ const SubmitBlog = () => {
             blogTitle: "",
             blogBody: "",
         },
-
         validationSchema: blogSchema,
         onSubmit: async (values) => {
             const formData = new FormData();
             formData.append("blogTitle", values.blogTitle);
             formData.append("blogBody", values.blogBody);
+            formData.append("blogImage", "");
             if (image) {
-                formData.append("blogImage", image, image.name);
-                console.log('formData is', Array.from(formData));
+                formData.set("blogImage", image, image.name);
             }
             let resp = await fetch('http://localhost:3000/newblogentry', {
                 method: 'POST',

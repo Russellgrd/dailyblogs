@@ -9,6 +9,7 @@ import Posts from './components/Posts';
 import SubmitBlog from './components/SubmitBlog';
 import Logout from './components/Logout';
 import { UserContextProvider } from './context/UserContext';
+import Editpost from './components/Editpost';
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
             <Route path="/posts" element={<Posts />} />
             <Route path="/register" element={<Register />} />
             <Route path="/submitblog" element={<SubmitBlog />} />
+            <Route path="editpost" element={<Editpost />} />
             <Route path="/logout" element={<Logout />} />
           </Routes>
         </UserContextProvider>

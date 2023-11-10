@@ -314,3 +314,51 @@ margin-left: 2rem;
 .showMessage {
   display: block;
 }
+
+.editPostsBox {
+  display: none;
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+  background-color: #F5AE23;
+}
+
+.active {
+  display: block;
+}
+
+.editPost {
+  min-height: 95vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.editBlogBody {
+  width: 50%;
+  height: 5rem;
+}
+
+.editPostForm {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+} 
+
+.editBlogBody {
+  min-width: 100%;
+}
+
+
+.editBlogImage {
+  margin: 1rem;
+  width: 20%;
+}
+
+
+.noImageDisplay {
+  height: 0;
+  width: 0;
+}

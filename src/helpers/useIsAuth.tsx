@@ -6,7 +6,6 @@ export const useIsAuth = async (userContext: UserContextType) => {
             credentials: "include",
         });
         const data = await resp.json();
-        console.log('JSON Data issss', data);
         userContext.setUser(data);
     } catch (err) {
         console.log(err);
