@@ -32,7 +32,6 @@ const Login = () => {
                     body: JSON.stringify({ email: values.email, password: values.password })
                 })
                 let data = await resp.json();
-                console.log("login response message is", data.message);
                 if (data.message == "Successfully logged in. Redirecting.") {
                     setAuthenticating(false);
                     navigate('/posts');
@@ -50,7 +49,6 @@ const Login = () => {
 
         },
     })
-
 
     return (
         <div className="login">

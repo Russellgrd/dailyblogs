@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useFormik } from 'formik';
 import { useNavigate } from 'react-router-dom';
-import { blogSchema } from '../Validation/BlogValidation';
 import { Bars } from 'react-loading-icons'
 
 
@@ -34,9 +33,7 @@ const Editpost = () => {
             const changeStatus = hasBlogChanged({ blogTitle: location.state.blogTitle, blogBody: location.state.blogBody, blogImageName: location.state.blogImageName },
                 { blogTitle: values.editBlogTitle, blogBody: values.editBlogBody, blogImageName: image ? image.name : location.state.blogImageName }
             );
-            console.log("changeStatus is", changeStatus);
             if (changeStatus) {
-                console.log("changing blog");
                 setSubmittingBlog(true);
                 formData.append("_id", values._id);
                 formData.append("blogTitle", values.editBlogTitle);
@@ -72,23 +69,9 @@ const Editpost = () => {
                 const hasChanged = !titleMatch || !bodyMatch || !imageMatch ? true : false;
                 return hasChanged;
             }
-
-
-
-            // let resp = await fetch('http://localhost:3000/editblogentry', {
-            //     method: 'POST',
-            //     credentials: "include",
-            //     body: formData
-            // });
-            // let data = await resp.json();
-            // if (data.message.includes("blog successfully saved")) {
-            //     //navigate('/posts');
-            //     console.log(data.message);
-            // }
         },
 
     })
-
 
     return (
         <div className='editPost'>

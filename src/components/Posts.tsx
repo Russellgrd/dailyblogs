@@ -79,13 +79,6 @@ const Posts = () => {
         navigate('/editpost', {
             state: blogData
         })
-        // const response = await fetch('', {
-        //     method: "POST",
-        //     headers: {
-
-        //     },
-        //     body: JSON.stringify(blog)
-        // });
     }
 
     return (
@@ -100,9 +93,7 @@ const Posts = () => {
                     <p className='postBody'> {blog.blogBody} </p>
                     {blog.blogImageName && <img className='postImage' src={"http://localhost:3000/images/" + blog.blogImageName} />}
                 </div>
-
             )}
-
         </div>
     )
 }
