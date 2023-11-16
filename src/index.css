@@ -62,8 +62,6 @@ html {
   font-size: 1.2rem;
   margin-right: 1rem;
   color: #faa907;
-
-
 }
 
 @media only screen and (max-width: 800px) {
@@ -71,20 +69,27 @@ html {
     display: block;
     margin-left: 1rem;
     margin-top: 1rem;
+    margin-bottom: 2px;
   }  
   .nav {
     align-self: self-start;
     flex-direction: column;
-    align-items: start;
-    width:50%;
-    height: auto;
+    justify-content: center;
+    width:70%;
+    min-height: 50vh;
     position: fixed;
     padding-left: 1rem;
-    
+ 
+  }
+
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
   }
 
   .show {
-    
+    visibility: visible;
+    animation: fadeIn 1s;
   }
 
   .hide {
@@ -93,13 +98,15 @@ html {
 
   
   .navChild {
-  
+    margin-top: 1rem;
+    margin-bottom: 1rem;
   }
   
 
   
   .navUserEmail {
     align-self: self-start;
+    margin-top: 1rem;
   }
 }
 
@@ -202,6 +209,21 @@ html {
   text-decoration: none;
   height: 3rem;
   text-align: center;
+}
+
+@media only screen and (max-width: 800px) {
+  .loginForm {
+    min-width: 90%;
+  }
+  .loginForm>input {
+    min-width: 100%;
+  }
+  .loginForm>button {
+    height: 4rem;  
+  }
+  .loginRegisterButton {
+  height: 4rem;
+  }
 }
 
 .submitBlog {

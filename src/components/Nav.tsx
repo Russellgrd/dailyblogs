@@ -23,7 +23,7 @@ const Nav = () => {
 
         <div className="navWrapper">
             <img onClick={handleNavBurgerButton} className="navBurger" src={navBurger} alt="Nav Burger Icon" />
-            <ul className={navClass}>
+            <ul onClick={(e) => { setShow(state => !state) }} className={navClass}>
                 {userContext?.user?.email ?
                     <li className="navChild">
                         <Link to='/logout'>logout</Link>
