@@ -86,9 +86,9 @@ const Posts = () => {
 
             {blogs && blogs.map((blog: { _id: string, blogTitle: string, blogBody: string, blogImageName: string, createdAt: string, email: string }) =>
                 <div className='post' key={blog._id}>
+                    {userContext.user.email === blog.email ? <div className='postsButtonBox'> <button className='postsEditDeleteButton' onClick={(e) => { handleDelete(blog) }}>delete</button> <button className='postsEditDeleteButton' onClick={(e) => { handleEdit(blog) }}>edit</button>  </div> : null}
                     <h1 className='postHeading'>{blog.blogTitle}</h1>
                     <p>Written {moment(blog.createdAt).format('DD-MM-YYYY HH:mm')} by {blog.email.split("@")[0]}</p>
-                    {userContext.user.email === blog.email ? <div> <button onClick={(e) => { handleDelete(blog) }}>delete</button> <button onClick={(e) => { handleEdit(blog) }}>edit</button>  </div> : null}
                     {deletingOrUpdatingBlog ? <Bars /> : null}
                     <p className='postBody'> {blog.blogBody} </p>
                     {blog.blogImageName && <img className='postImage' src={"http://localhost:3000/images/" + blog.blogImageName} />}

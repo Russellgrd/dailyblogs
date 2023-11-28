@@ -80,6 +80,7 @@ const SubmitBlog = () => {
                     }}
                     onBlur={formik.handleBlur}
                 />
+                {image ? <span>{image.name} </span> : ""}
                 <button className='blogButton' type='submit'>submit</button>
             </form>
         </div>

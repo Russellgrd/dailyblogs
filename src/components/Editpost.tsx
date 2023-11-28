@@ -112,7 +112,7 @@ const Editpost = () => {
                     }}
                     onBlur={formik.handleBlur}
                 />
-                <input type="submit" value="submit" />
+                <input className='editBlogButton' type="submit" value="submit" />
             </form>
 
             {location.state.blogImageName ? <img className={editBlogImage} src={"http://localhost:3000/images/" + location.state.blogImageName} /> : ""}

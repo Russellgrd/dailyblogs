@@ -236,7 +236,7 @@ html {
 }
 
 .submitBlogForm {
-  height: 50vh;
+  min-height:50vh;
   display: flex;
   flex-direction: column;
   align-items: cente;
@@ -259,7 +259,7 @@ html {
 
 .blogBody {
   border: none;
-  height: 100%;
+  height: 40VH;
   width: 100%;
   padding: 1rem;
   border: 1px solid gold;
@@ -268,12 +268,14 @@ html {
 .blogFile {
   display: none;
 }
+
 .blogFileButton {
   margin-top: 1rem;
   padding: 5px;
   width: 12rem;
   height: 3rem;
   text-align: center;
+  margin-bottom: 1rem;
   border: 1px solid gold;
 }
 
@@ -285,12 +287,29 @@ html {
   margin: 1rem;
 }
 
+@media only screen and (max-width: 800px) {
+  .submitBlogForm {
+    height: 70vh;
+    width: 90%;
+  }
+  .blogFileButton {
+    width: 90%;
+  }
+  
+  .blogButton {
+    width: 90%;
+  }
+
+}
+
+
 .posts {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   min-width: 100%;
   align-items: center;
+  margin-top: 1rem;
 }
 
 .post {
@@ -320,6 +339,23 @@ html {
 .postButton {
 border: 1px solid gold;
 margin-left: 2rem;
+}
+
+.postsButtonBox {
+  align-self: flex-end;
+  margin-right: 1rem;
+}
+
+.postsEditDeleteButton {
+  border: none;
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  color: rgb(255, 115, 0);
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.postsEditDeleteButton:hover {
+  cursor: pointer;
 }
 
 .postUserNotificationBox {
@@ -358,12 +394,17 @@ margin-left: 2rem;
   justify-content: center;
 }
 
+.editBlogTitle{
+  height: 2rem;
+}
+
 .editBlogBody {
   width: 50%;
-  height: 5rem;
+  height: 50vh;
 }
 
 .editPostForm {
+  margin-top: 3rem;
   display: flex;
   flex-direction: column;
   width: 50%;
@@ -373,12 +414,39 @@ margin-left: 2rem;
   min-width: 100%;
 }
 
+.editBlogButton {
+  width: 7rem;
+  height: 2rem;
+  margin: auto;
+  border: 1px solid gold;
+}
+
 
 .editBlogImage {
   margin: 1rem;
   width: 20%;
 }
 
+@media only screen and (max-width: 800px) {
+  .postImage {
+    width: 100%;
+  }
+  .editPostForm {
+    width: 90%;
+    min-height: 60vh;
+  } 
+  
+  .editBlogBody {
+    margin-top: 1rem;
+    min-height: 30vh;
+    border: 1px solid purple;
+  }
+
+  .editBlogImage {
+    width: 50%;
+  }
+
+}
 
 .noImageDisplay {
   height: 0;
